@@ -6,6 +6,7 @@ plugins {
 android {
     namespace = "com.saswata.documindai"
     compileSdk = 35
+    ndkVersion = "27.2.12479018"
 
     defaultConfig {
         applicationId = "com.saswata.documindai"
@@ -15,6 +16,18 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            // 64-bit only — covers virtually all real Android 8+ devices,
+            // and halves the native library size vs. shipping armeabi-v7a too.
+            abiFilters += "arm64-v8a"
+        }
+
+        externalNativeBuild {
+            cmake {
+                cppFlags += ""
+            }
+        }
     }
 
     buildTypes {
@@ -36,6 +49,13 @@ android {
     }
     buildFeatures {
         viewBinding = true
+    }
+
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
+            version = "4.1.2"
+        }
     }
 }
 
