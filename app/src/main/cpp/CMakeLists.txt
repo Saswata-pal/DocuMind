@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.1.2)
+cmake_minimum_required(VERSION 3.22.1)
 
 project("documind" VERSION 1.0.0 LANGUAGES C CXX)
 
@@ -15,7 +15,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED true)
 if(DEFINED ANDROID_ABI)
     message(STATUS "Detected Android ABI: ${ANDROID_ABI}")
     if(ANDROID_ABI STREQUAL "arm64-v8a")
-        set(GGML_OPENMP ON)
+        # OpenMP disabled for now — Android NDK's clang needs extra linker
+        # flags to support it properly, which aren't configured yet. This
+        # was causing the compiler test-compile to fail during CMake
+        # configuration. Single-threaded llama.cpp still works fine; this
+        # is a performance tuning step to revisit later, not a blocker.
+        set(GGML_OPENMP OFF)
     else()
         message(FATAL_ERROR "Unsupported ABI: ${ANDROID_ABI} (this project builds arm64-v8a only, see build.gradle.kts ndk.abiFilters)")
     endif()
