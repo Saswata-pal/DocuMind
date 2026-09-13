@@ -2,6 +2,14 @@ cmake_minimum_required(VERSION 3.22.1)
 
 project("documind" VERSION 1.0.0 LANGUAGES C CXX)
 
+# Disable precompiled headers project-wide. PCH is a compile-speed
+# optimization only — turning it off avoids a spurious "unable to read
+# PCH file" error that Android Studio's sync-time code-indexing probe
+# triggers (it reuses PCH flags on a synthetic file before the real
+# PCH has been generated), and has no effect on whether the real build
+# succeeds.
+set(CMAKE_DISABLE_PRECOMPILE_HEADERS ON)
+
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED true)
 
