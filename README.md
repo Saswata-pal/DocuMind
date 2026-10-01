@@ -1,4 +1,4 @@
-# DocuMind AI
+__# DocuMind AI
 
 A privacy-first, fully offline Android document & chat assistant. Load PDFs or Markdown files and ask questions about them — no internet connection required, no data ever leaves the device.
 
@@ -29,4 +29,5 @@ A privacy-first, fully offline Android document & chat assistant. Load PDFs or M
 
 ## License
 
-TBD
+TBD__
+## TO Be Launched soon
