@@ -30,4 +30,4 @@ A privacy-first, fully offline Android document & chat assistant. Load PDFs or M
 ## License
 
 TBD__
-## TO Be Launched soon
+## 40% progress made
